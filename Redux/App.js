@@ -1,117 +1,53 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from "react-redux";
+import Home from './components/Home';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+  render() {
+    return (
+      <Provider store={store}>
+        <View>
+          <Home/>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+      </Provider>
+    );
+  }
+}
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
-export default App;
+const defaultState = {
+  arrWords: [
+      {id: 1, en: 'action', vn: "hanh dong", memorized: true, isShow: true},
+      {id: 2, en: 'alo', vn: "alo", memorized: false, isShow: true},
+      {id: 3, en: 'abc', vn: "abc", memorized: true, isShow: true},
+      {id: 4, en: 'dfs', vn: "dfs", memorized: true, isShow: false},
+      {id: 5, en: 'eg', vn: "eg", memorized: false, isShow: true},
+      {id: 6, en: 'bb', vn: "bb", memorized: true, isShow: false},
+      {id: 7, en: 'cc', vn: "cc", memorized: true, isShow: true},
+      {id: 8, en: 'đd', vn: "đd", memorized: false, isShow: false},
+      {id: 9, en: 'ggsd', vn: "ggsd", memorized: false, isShow: true},
+      {id: 10, en: 'sngsf', vn: "sngsf", memorized: true, isShow: false},
+      {id: 11, en: 'sngsf', vn: "sngsf", memorized: false, isShow: false},
+      {id: 12, en: 'vagraa', vn: "vagraa", memorized: true, isShow: true},
+  ],
+  filterStatus: 'SHOW_ALL',
+  isAdding: false,
+}
+
+// reducer -> tien doan action
+const reducer = (state = defaultState , action) =>{
+  return state;
+}
+
+// tao ra store
+const store = createStore(reducer);
+
+//tich hop vao trong ung dung react
