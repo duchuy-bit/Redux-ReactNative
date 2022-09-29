@@ -44,6 +44,31 @@ const defaultState = {
 
 // reducer -> tien doan action
 const reducer = (state = defaultState , action) =>{
+  switch (action.type){
+    case 'FILTER_SHOW_ALL': 
+      return {...state, filterStatus:  'SHOW_ALL'};
+    case 'FILTER_MEMORIZED': 
+      return {...state, filterStatus:  'MEMORIZED'};
+    case 'FILTER_PRACTICE': 
+      return {...state, filterStatus:  'PRACTICE'};
+    case 'TOGGLE_MEMORIZED':
+      // console.log('ca')
+      return {
+        ...state,
+        arrWords: state.arrWords.map(e=>{
+          if(e.id === action.id) return {...e, memorized: !e.memorized}
+          else return e;
+        }) 
+      }
+    case 'SHOW':
+      return{
+        ...state,
+        arrWords: state.arrWords.map(e => {
+          if (e.id === action.id) return {...e, isShow: !e.isShow}
+          return e;
+        })
+      }
+  }
   return state;
 }
 
