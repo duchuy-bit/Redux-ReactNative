@@ -14,18 +14,21 @@ class Add extends Component {
 
     addToStore(){
         if (this.state.vocabulary !== '' && this.state.mean !== ''){
-            // console.log('');
+            // hien thi gia tri da nhap
             console.log(this.state.vocabulary);
             console.log(this.state.mean);
 
+            //goi dispatch 
             this.props.dispatch({
                 type: 'NEWVOCABULARY',
                 en: this.state.vocabulary,
                 vn: this.state.mean
             })
 
+            //cho gia tri da nhap bang rong
             this.setState({vocabulary: '',mean: ''})
 
+            //tat form nhap
             this.props.dispatch({type: 'ADD'})
 
 
@@ -40,6 +43,7 @@ class Add extends Component {
     }
 
     render() {
+        //get screen size
         const windowWidth = Dimensions.get('window').width;
         const windowHeight = Dimensions.get('window').height;
 
@@ -49,17 +53,13 @@ class Add extends Component {
             <Text>Vocabulary: </Text>
             <TextInput  
                 value={this.state.vocabulary}
-                // onChangeText={(vocabulary) => this.setState({...this.state, vocabulary})}
                 onChangeText={(text) => this.setState({...this.state,vocabulary: text})}
-
-                // onChangeText={(text)=> this.handleVocabulary(text)}
                 style={{backgroundColor: 'white',width: windowWidth/2,marginHorizontal: 30,marginVertical:10}}
             />
             <Text></Text>
             <Text>Mean</Text>
             <TextInput  
                 value={this.state.mean}
-                // onChangeText={(text)=>{this.setState({...this.state, mean: text})}}
                 onChangeText={(text) => this.setState({...this.state,mean: text})}
                 style={{backgroundColor: 'white',width: windowWidth/2,marginHorizontal: 30,marginVertical:10}}
             />

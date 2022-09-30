@@ -12,7 +12,6 @@ class Menu extends Component {
     
     getTextStyle(statusName){
         const filterStatus = this.props.myFilter;
-        // console.log(filterStatus);
         if (statusName === filterStatus) return{
             color: 'pink',
             fontWeight: 'bold',

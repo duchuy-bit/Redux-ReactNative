@@ -12,9 +12,7 @@ export default class MyWord extends Component {
     render() {
         const {en ,vn, memorized, isShow} = this.props.myWord;
         const textDecorationLine = memorized? 'line-through': 'none';
-
-        // const textShow = isShow? {vn} : '******';
-        // const 
+        
         return (
         <View style={{backgroundColor:'pink', margin: 20}}>
             <Text style={{textDecorationLine}}> {en}  </Text>
