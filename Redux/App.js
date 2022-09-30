@@ -68,6 +68,15 @@ const reducer = (state = defaultState , action) =>{
           return e;
         })
       }
+    case 'ADD':
+      return {...state,isAdding: !state.isAdding};
+    case 'NEWVOCABULARY':
+      addArr = [{id : state.arrWords.length+1, en: action.en, vn: action.vn, memorized: false, isShow: true} ]
+      console.log(addArr[0].id)
+      return {
+        // ...state, arrWords: state.arrWords.push(addArr[0])
+        ...state, arrWords: [addArr[0],...state.arrWords]
+      }
   }
   return state;
 }
